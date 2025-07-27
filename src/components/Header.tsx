@@ -3,6 +3,7 @@
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
 import { useState, useEffect } from "react";
 import { Globe } from "lucide-react";
+import Image from "next/image";
 
 const Header = () => {
   const router = useRouter();
@@ -26,10 +27,14 @@ const Header = () => {
 
   return (
     <header className="w-full bg-white shadow sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-        <h1 className="text-2xl font-semibold text-[#ff6a1a]">
-          10 Minute School
-        </h1>
+      <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+        <Image
+          src={"/10mslogo-svg.svg"}
+          width={100}
+          height={27}
+          alt="logo"
+          className="cursor-pointer"
+        />
 
         <button
           onClick={toggleLanguage}

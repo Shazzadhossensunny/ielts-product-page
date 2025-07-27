@@ -33,7 +33,7 @@ const Header = () => {
 
         <button
           onClick={toggleLanguage}
-          className="flex items-center gap-2 text-sm bg-gray-100 px-3 py-2 rounded hover:bg-gray-200"
+          className="flex items-center gap-2 text-sm bg-gray-100 px-3 py-2 rounded hover:bg-gray-200 transition-colors"
         >
           <Globe size={18} />
           {lang === "en" ? "বাংলা" : "English"}

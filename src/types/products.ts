@@ -14,7 +14,9 @@ export interface Checklist {
 }
 
 export interface Seo {
-  // Add SEO fields as needed
+  title?: string;
+  description?: string;
+  keywords?: string;
 }
 
 export interface CtaText {
@@ -23,19 +25,19 @@ export interface CtaText {
 }
 
 export interface Instructor {
-  description: string;
-  has_instructor_page: boolean;
-  image: string;
   name: string;
+  description: string;
+  image: string;
   short_description: string;
   slug: string;
+  has_instructor_page: boolean;
 }
 
 export interface Feature {
   icon: string;
   id: string;
-  subtitle: string;
   title: string;
+  subtitle: string;
 }
 
 export interface Pointer {
@@ -46,48 +48,14 @@ export interface Pointer {
 }
 
 export interface AboutItem {
+  title: string;
   description: string;
   icon: string;
   id: string;
-  title: string;
-}
-
-export interface ExclusiveFeature {
-  checklist: string[];
-  file_type: string;
-  file_url: string;
-  id: string;
-  title: string;
-  video_thumbnail: string;
-}
-
-export interface Testimonial {
-  description: string;
-  id: string;
-  name: string;
-  profile_image: string;
-  testimonial: string;
-  thumb?: string;
-  video_type: string;
-  video_url?: string;
-}
-
-export interface FAQ {
-  answer: string;
-  id: string;
-  question: string;
 }
 
 export interface Section {
-  type:
-    | "instructors"
-    | "features"
-    | "pointers"
-    | "about"
-    | "feature_explanations"
-    | "testimonials"
-    | "faq"
-    | string;
+  type: string;
   name: string;
   description: string;
   bg_color: string;
@@ -95,26 +63,44 @@ export interface Section {
   values: any[];
 }
 
-export interface ProductData {
+export interface Price {
+  currency: string;
+  discount_price: number;
+  is_discounted: boolean;
+  original_price: number;
+}
+
+export interface ProductFaq {
+  id: string;
+  question: string;
+  answer: string;
+  order_idx: number;
+  page_visibility: boolean;
+}
+
+export interface Data {
   slug: string;
   id: number;
   title: string;
   description: string;
   media: Medium[];
   checklist: Checklist[];
-  seo: Seo;
+  seo: Seo[];
   cta_text: CtaText;
   sections: Section[];
+  instructors: Instructor[];
+  features: Feature[];
+  pointers: Pointer[];
+  about_items: AboutItem[];
+  product_faqs: ProductFaq[];
+  price: Price;
 }
 
 export interface ApiResponse {
   code: number;
-  data: ProductData;
+  data: Data;
   error: any[];
   message: string;
   payload: any[];
   status_code: number;
 }
-
-// Language types
-export type Language = "en" | "bn";

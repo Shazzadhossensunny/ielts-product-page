@@ -1,7 +1,9 @@
 import CourseDetails from "@/components/CourseDetails";
+import CoursesExclusiveFeatures from "@/components/CoursesExclusiveFeatures";
 import FeaturesLayout from "@/components/FeaturesLayout";
 import HeroSection from "@/components/HeroSection";
 import InstructorSection from "@/components/InstructoreSection";
+import PointersSection from "@/components/PointersSection";
 import { getProductBySlug } from "@/lib/getProductBySlug";
 import { Data } from "@/types/products";
 
@@ -40,7 +42,11 @@ export default async function ProductPage({ params, searchParams }: PageProps) {
       {instructor && <InstructorSection instructor={instructor} />}
 
       <FeaturesLayout sections={product.data.sections} />
-      {/* <CourseDetails sections={product.data.sections} /> */}
+      <PointersSection pointers={product.data.sections} />
+      <CoursesExclusiveFeatures
+        coursesExclusiveFeatures={product.data.sections}
+      />
+      <CourseDetails sections={product.data.sections} />
     </div>
   );
 }

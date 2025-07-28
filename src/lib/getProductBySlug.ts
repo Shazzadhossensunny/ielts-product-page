@@ -1,11 +1,11 @@
-import { ApiResponse } from "@/types/products";
+import { Data } from "@/types/products";
 
 const API_BASE_URL = "https://api.10minuteschool.com/discovery-service/api/v1";
 
 export async function getProductBySlug(
   slug: string,
   lang: "en" | "bn" = "en"
-): Promise<any> {
+): Promise<Data> {
   const response = await fetch(
     `${API_BASE_URL}/products/${slug}?lang=${lang}`,
     {

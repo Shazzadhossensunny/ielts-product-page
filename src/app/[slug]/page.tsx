@@ -2,6 +2,7 @@ import CourseDetails from "@/components/CourseDetails";
 import CoursesExclusiveFeatures from "@/components/CoursesExclusiveFeatures";
 import FeaturesLayout from "@/components/FeaturesLayout";
 import HeroSection from "@/components/HeroSection";
+import HeroWrapper from "@/components/HeroWrapper";
 import InstructorSection from "@/components/InstructoreSection";
 import PointersSection from "@/components/PointersSection";
 import { getProductBySlug } from "@/lib/getProductBySlug";
@@ -40,7 +41,7 @@ export default async function ProductPage({ params, searchParams }: PageProps) {
   return (
     <div>
       {/* Hero Section */}
-      <HeroSection
+      <HeroWrapper
         title={product.title}
         description={product.description}
         media={product.media}

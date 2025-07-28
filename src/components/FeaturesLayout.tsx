@@ -13,18 +13,18 @@ const FeaturesLayout = ({ sections }: Props) => {
   if (!featureSection || !featureSection.values) return null;
 
   return (
-    <section className="pb-12 px-4 bg-white">
+    <section className="pb-12 px-4 sm:px-6 md:px-8 bg-white">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-3">
-          <div className="col-span-2">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div className="col-span-2 w-full">
             {/* Section Title */}
             <h2 className="text-xl font-semibold mb-4 text-[#111827]">
               {featureSection.name || "How the course is laid out"}
             </h2>
 
             {/* Features Grid */}
-            <div className="bg-[#111827] rounded-lg p-8 w-full md:w-5/6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="bg-[#111827] rounded-lg p-6 md:p-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {featureSection.values.map((feature, index) => (
                   <div
                     key={feature.id || index}

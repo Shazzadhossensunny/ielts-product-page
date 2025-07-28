@@ -27,10 +27,10 @@ const CourseDetails = ({ sections }: Props) => {
   };
 
   return (
-    <section className="bg-white pb-16">
+    <section className="bg-white pb-16 px-4 sm:px-6 md:px-8">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-3">
-          <div className="col-span-2 w-full md:w-5/6">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div className="col-span-2 w-full">
             <h2 className="text-2xl font-semibold mb-4 text-[#111827]">
               Course details
             </h2>

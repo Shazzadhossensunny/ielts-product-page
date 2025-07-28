@@ -16,20 +16,20 @@ const CourseExclusiveFeatures = ({ coursesExclusiveFeatures }: Props) => {
     return null;
 
   return (
-    <section className="pb-12 bg-white">
+    <section className="pb-12 bg-white px-4 sm:px-6 md:px-8">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-3">
-          <div className="col-span-2 w-full md:w-5/6">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div className="col-span-2 w-full">
             {/* Section Title */}
             <h2 className="text-2xl font-semibold text-[#111827] mb-4">
               {featureExplanationSection.name || "কোর্স এক্সক্লুসিভ ফিচার"}
             </h2>
 
-            <div className="space-y-2 border bg-white border-[#dbe1eb] rounded-[4px]">
+            <div className="space-y-4 border bg-white border-[#dbe1eb] rounded-[4px] p-4">
               {featureExplanationSection.values.map((feature, index) => (
                 <div
                   key={feature.id || index}
-                  className="bg-white flex justify-between gap-3 px-2 py-5 border-b border-[#dbe1eb] last:border-b-0 mx-3 overflow-hidden"
+                  className="bg-white flex flex-col md:flex-row justify-between gap-3 px-2 py-5 border-b border-[#dbe1eb] last:border-b-0 mx-3 overflow-hidden"
                 >
                   {/* Feature Content */}
                   <div>
@@ -58,13 +58,13 @@ const CourseExclusiveFeatures = ({ coursesExclusiveFeatures }: Props) => {
 
                   {/* Feature Image */}
                   {feature.file_url && (
-                    <div className="relative">
+                    <div className="relative w-full md:w-[250px]">
                       <Image
                         src={feature.file_url}
                         alt={feature.title || `Feature ${index + 1}`}
                         width={250}
                         height={200}
-                        className="object-cover"
+                        className="object-cover w-full h-auto"
                       />
                     </div>
                   )}

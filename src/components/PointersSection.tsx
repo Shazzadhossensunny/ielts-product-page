@@ -18,10 +18,10 @@ const PointersSection = ({ pointers, title }: Props) => {
     title || pointersSection.name || "What you will learn by doing the course";
 
   return (
-    <section className="bg-white pb-16">
+    <section className="bg-white pb-12 px-4 sm:px-6 md:px-8">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-3">
-          <div className="col-span-2 w-full md:w-5/6">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div className="col-span-2 w-full">
             {/* Section Title */}
             <h2 className="text-2xl font-semibold mb-4 text-[#111827]">
               {sectionTitle}
@@ -42,7 +42,7 @@ const PointersSection = ({ pointers, title }: Props) => {
                     />
 
                     {/* Pointer Text */}
-                    <p className="text-[#111827] leading-6 text-base">
+                    <p className="text-[#111827] leading-6 text-sm  md:text-base">
                       {pointer.text}
                     </p>
                   </div>

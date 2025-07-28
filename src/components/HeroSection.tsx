@@ -110,7 +110,7 @@ const HeroSection = ({
         <div className="max-w-7xl mx-auto h-full">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 h-full">
             {/* Left Content - 2/3 width */}
-            <div className="lg:col-span-2 space-y-6 flex flex-col w-full md:w-5/6">
+            <div className="lg:col-span-2 space-y-6 flex flex-col w-full">
               <div className="space-y-4">
                 <h1 className="text-xl md:text-4xl font-semibold leading-tight text-white">
                   {title}
@@ -264,7 +264,7 @@ const HeroSection = ({
                   </div>
 
                   {/* Price and Features Section */}
-                  <div className="p-6">
+                  <div className="p-4">
                     <div className="flex items-center space-x-2 mb-4">
                       <span className="text-2xl font-bold text-gray-900">
                         ৳1000

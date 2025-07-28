@@ -18,17 +18,17 @@ const InstructorSection = ({ instructor }: Props) => {
   if (!instructor) return null;
 
   return (
-    <section className="bg-white py-12 px-4">
+    <section className="bg-white py-12 px-4 sm:px-6 md:px-8">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-3">
-          <div className="col-span-2 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div className="col-span-2 relative z-10 w-full">
             {/* title */}
             <h2 className="text-2xl font-semibold text-[#111827] mb-4">
               Course instructor
             </h2>
-            <div className="flex flex-col md:flex-row items-center gap-1 border border-[#dbe1eb] rounded-[4px] p-5 pb-0 w-full md:w-5/6">
+            <div className="flex flex-col md:flex-row items-center gap-3 border border-[#dbe1eb] rounded-[4px] p-5 pb-0">
               {/* Instructor Image */}
-              <div className="w-24 h-24 shrink-0">
+              <div className="w-20 h-20 md:w-24 md:h-24 shrink-0">
                 <Image
                   src={instructor.image}
                   alt={instructor.name}

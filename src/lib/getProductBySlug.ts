@@ -22,17 +22,17 @@ export async function getProductBySlug(
   }
 
   const data = await response.json();
-  return data;
+  return data.data;
 }
 
-export function getYouTubeEmbedUrl(videoId: string): string {
-  return `https://www.youtube.com/embed/${videoId}`;
-}
+// export function getYouTubeEmbedUrl(videoId: string): string {
+//   return `https://www.youtube.com/embed/${videoId}`;
+// }
 
-export function extractVideoId(url: string): string {
-  // Handle direct video IDs and YouTube URLs
-  const videoIdRegex =
-    /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/;
-  const match = url.match(videoIdRegex);
-  return match ? match[1] : url;
-}
+// export function extractVideoId(url: string): string {
+//   // Handle direct video IDs and YouTube URLs
+//   const videoIdRegex =
+//     /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/;
+//   const match = url.match(videoIdRegex);
+//   return match ? match[1] : url;
+// }

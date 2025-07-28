@@ -16,55 +16,54 @@ const CourseExclusiveFeatures = ({ coursesExclusiveFeatures }: Props) => {
     return null;
 
   return (
-    <section className="py-12 px-4 bg-white">
+    <section className="pb-12 bg-white">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-3">
-          <div className="col-span-2">
+          <div className="col-span-2 w-full md:w-5/6">
             {/* Section Title */}
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-8 text-center">
+            <h2 className="text-2xl font-semibold text-[#111827] mb-4">
               {featureExplanationSection.name || "কোর্স এক্সক্লুসিভ ফিচার"}
             </h2>
 
-            <div className="space-y-2">
+            <div className="space-y-2 border bg-white border-[#dbe1eb] rounded-[4px]">
               {featureExplanationSection.values.map((feature, index) => (
                 <div
                   key={feature.id || index}
-                  className="bg-white flex justify-between rounded-lg border border-gray-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300"
+                  className="bg-white flex justify-between gap-3 px-2 py-5 border-b border-[#dbe1eb] last:border-b-0 mx-3 overflow-hidden"
                 >
                   {/* Feature Content */}
-                  <div className="p-6">
-                    <h3 className="text-lg font-semibold text-gray-900 mb-4">
+                  <div>
+                    <h3 className="text-base font-medium text-[#111827] mb-4">
                       {feature.title}
                     </h3>
 
                     {feature.checklist && (
                       <div className="space-y-3">
-                        {feature.checklist.map((item, itemIndex) => (
-                          <div
-                            key={itemIndex}
-                            className="flex items-start gap-3"
-                          >
-                            <div className="flex-shrink-0">
-                              <Check className="w-5 h-5 text-blue-500 mt-0.5" />
+                        {feature.checklist.map(
+                          (item: string, itemIndex: any) => (
+                            <div
+                              key={itemIndex}
+                              className="flex items-start gap-3"
+                            >
+                              <div className="flex-shrink-0">
+                                <Check className="w-5 h-5 text-blue-500 mt-0.5" />
+                              </div>
+                              <p className="text-gray-700 text-base">{item}</p>
                             </div>
-                            <p className="text-gray-700 text-sm leading-relaxed">
-                              {item}
-                            </p>
-                          </div>
-                        ))}
+                          )
+                        )}
                       </div>
                     )}
                   </div>
 
                   {/* Feature Image */}
                   {feature.file_url && (
-                    <div className="relative h-48">
+                    <div className="relative">
                       <Image
                         src={feature.file_url}
                         alt={feature.title || `Feature ${index + 1}`}
                         width={250}
                         height={200}
-                        loading="lazy"
                         className="object-cover"
                       />
                     </div>

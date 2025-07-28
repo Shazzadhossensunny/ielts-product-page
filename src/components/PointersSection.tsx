@@ -1,5 +1,5 @@
 import { Section } from "@/types/products";
-import { CheckCircle } from "lucide-react";
+import { Check, CheckCircle } from "lucide-react";
 
 interface Props {
   pointers: Section[];
@@ -18,17 +18,17 @@ const PointersSection = ({ pointers, title }: Props) => {
     title || pointersSection.name || "What you will learn by doing the course";
 
   return (
-    <section className="bg-white py-16 px-4">
+    <section className="bg-white pb-16">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-3">
-          <div className="col-span-2">
+          <div className="col-span-2 w-full md:w-5/6">
             {/* Section Title */}
-            <h2 className="text-3xl font-bold mb-12 text-[#212337]">
+            <h2 className="text-2xl font-semibold mb-4 text-[#111827]">
               {sectionTitle}
             </h2>
 
             {/* Pointers Container */}
-            <div className="border border-gray-200 rounded-lg p-8 bg-gray-50">
+            <div className="border border-[#dbe1eb] rounded-[4px] p-6 bg-white">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 {pointersSection.values.map((pointer, index) => (
                   <div
@@ -36,13 +36,13 @@ const PointersSection = ({ pointers, title }: Props) => {
                     className="flex items-start gap-3"
                   >
                     {/* Checkmark Icon */}
-                    <CheckCircle
+                    <Check
                       className="text-blue-500 mt-1 flex-shrink-0"
                       size={20}
                     />
 
                     {/* Pointer Text */}
-                    <p className="text-gray-700 leading-6 text-sm">
+                    <p className="text-[#111827] leading-6 text-base">
                       {pointer.text}
                     </p>
                   </div>

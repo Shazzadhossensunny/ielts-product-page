@@ -1,4 +1,5 @@
 import { Section } from "@/types/products";
+import Image from "next/image";
 
 interface Props {
   sections: Section[];
@@ -12,17 +13,17 @@ const FeaturesLayout = ({ sections }: Props) => {
   if (!featureSection || !featureSection.values) return null;
 
   return (
-    <section className="py-12 px-4 bg-white">
+    <section className="pb-12 px-4 bg-white">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-3">
           <div className="col-span-2">
             {/* Section Title */}
-            <h2 className="text-3xl font-bold mb-8 text-[#212337]">
+            <h2 className="text-xl font-semibold mb-4 text-[#111827]">
               {featureSection.name || "How the course is laid out"}
             </h2>
 
             {/* Features Grid */}
-            <div className="bg-[#2c3e50] rounded-lg p-8">
+            <div className="bg-[#111827] rounded-lg p-8 w-full md:w-5/6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {featureSection.values.map((feature, index) => (
                   <div
@@ -32,10 +33,12 @@ const FeaturesLayout = ({ sections }: Props) => {
                     {/* Icon */}
                     <div className="flex-shrink-0">
                       {feature.icon ? (
-                        <img
+                        <Image
                           src={feature.icon}
-                          alt=""
-                          className="w-12 h-12 object-contain"
+                          alt="icon"
+                          width={36}
+                          height={36}
+                          className="object-cover"
                         />
                       ) : (
                         // Fallback icon based on index
@@ -100,7 +103,7 @@ const FeaturesLayout = ({ sections }: Props) => {
                       <h3 className="text-lg font-semibold text-white mb-2">
                         {feature.title}
                       </h3>
-                      <p className="text-gray-300 text-sm leading-relaxed">
+                      <p className="text-gray-400 text-sm leading-relaxed">
                         {feature.subtitle}
                       </p>
                     </div>

@@ -27,15 +27,15 @@ const CourseDetails = ({ sections }: Props) => {
   };
 
   return (
-    <section className="bg-gray-50 py-10 px-4">
+    <section className="bg-white pb-16">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-3">
-          <div className="col-span-2">
-            <h2 className="text-3xl font-semibold mb-6 text-[#212337]">
+          <div className="col-span-2 w-full md:w-5/6">
+            <h2 className="text-2xl font-semibold mb-4 text-[#111827]">
               Course details
             </h2>
 
-            <div className="space-y-4">
+            <div className="space-y-4 border border-[#dbe1eb] rounded-[4px] px-5 pt-2">
               {aboutSection.values.map((item, index) => {
                 const isOpen = openSections[item.id] || false;
                 const cleanTitle = stripHtmlTags(item.title);
@@ -43,28 +43,28 @@ const CourseDetails = ({ sections }: Props) => {
                 return (
                   <div
                     key={item.id || index}
-                    className="bg-white rounded-lg border border-gray-200 overflow-hidden"
+                    className="bg-white overflow-hidden border-dashed border-b border-[#dbe1eb] last:border-b-0"
                   >
                     {/* Header - Clickable */}
                     <button
                       onClick={() => toggleSection(item.id)}
-                      className="w-full px-6 py-4 flex items-center justify-between text-left hover:bg-gray-50 transition-colors duration-200"
+                      className="w-full py-4 flex items-center justify-between text-left transition-colors duration-200"
                     >
-                      <h3 className="text-lg font-medium text-gray-900">
+                      <h3 className="text-base font-bold text-black">
                         {cleanTitle}
                       </h3>
                       <div className="flex-shrink-0 ml-4">
                         {isOpen ? (
-                          <ChevronUp className="w-5 h-5 text-gray-500" />
+                          <ChevronUp className="w-5 h-5 text-black" />
                         ) : (
-                          <ChevronDown className="w-5 h-5 text-gray-500" />
+                          <ChevronDown className="w-5 h-5 text-black" />
                         )}
                       </div>
                     </button>
 
                     {/* Collapsible Content */}
                     {isOpen && (
-                      <div className="px-6 pb-6 border-t border-gray-100">
+                      <div className="pb-4">
                         <div
                           className="text-gray-700 leading-relaxed space-y-3 pt-4"
                           dangerouslySetInnerHTML={{ __html: item.description }}

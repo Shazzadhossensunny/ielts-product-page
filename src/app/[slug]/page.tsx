@@ -5,26 +5,34 @@ import HeroSection from "@/components/HeroSection";
 import InstructorSection from "@/components/InstructoreSection";
 import PointersSection from "@/components/PointersSection";
 import { getProductBySlug } from "@/lib/getProductBySlug";
-import { Data } from "@/types/products";
+import { Data, Section } from "@/types/products";
 
 interface PageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
-  searchParams: {
+  }>;
+  searchParams: Promise<{
     lang?: string;
-  };
+  }>;
 }
 
 export default async function ProductPage({ params, searchParams }: PageProps) {
-  const lang = (await searchParams.lang) || "en";
-  const product: Data = await getProductBySlug(params.slug, lang as any);
-  const productData = await product.data;
+  // Await both params and searchParams
+  const resolvedParams = await params;
+  const resolvedSearchParams = await searchParams;
+
+  const lang = resolvedSearchParams.lang || "en";
+  const product: Data = await getProductBySlug(
+    resolvedParams.slug,
+    lang as any
+  );
+  // const productData = await product.data;
 
   if (!product) return <div className="p-8 text-center">Product not found</div>;
+
   // Find the instructor section (it should be the one with type "instructors")
-  const instructorSection = product.data.sections.find(
-    (section) => section.type === "instructors"
+  const instructorSection = product.sections.find(
+    (section: Section) => section.type === "instructors"
   );
   // Get the first instructor from the values array
   const instructor = instructorSection?.values?.[0];
@@ -33,24 +41,20 @@ export default async function ProductPage({ params, searchParams }: PageProps) {
     <div>
       {/* Hero Section */}
       <HeroSection
-        title={productData.title}
-        description={productData.description}
-        media={productData.media}
-        ctaText={productData.cta_text}
-        checklist={productData.checklist}
+        title={product.title}
+        description={product.description}
+        media={product.media}
+        ctaText={product.cta_text}
+        checklist={product.checklist}
       />
 
-      <main>
-        {/* Instructor Section */}
-        {instructor && <InstructorSection instructor={instructor} />}
+      {/* Instructor Section */}
+      {instructor && <InstructorSection instructor={instructor} />}
 
-        <FeaturesLayout sections={productData.sections} />
-        <PointersSection pointers={productData.sections} />
-        <CoursesExclusiveFeatures
-          coursesExclusiveFeatures={productData.sections}
-        />
-        <CourseDetails sections={productData.sections} />
-      </main>
+      <FeaturesLayout sections={product.sections} />
+      <PointersSection pointers={product.sections} />
+      <CoursesExclusiveFeatures coursesExclusiveFeatures={product.sections} />
+      <CourseDetails sections={product.sections} />
     </div>
   );
 }

@@ -1,9 +1,9 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Play, ChevronLeft, ChevronRight } from "lucide-react";
+import { Play, ChevronLeft, ChevronRight, Star } from "lucide-react";
 import { Checklist, CtaText, Data } from "@/types/products";
-import { extractVideoId, getYouTubeEmbedUrl } from "@/lib/getProductBySlug";
+
 import Image from "next/image";
 
 interface Props {
@@ -26,14 +26,9 @@ const HeroSection = ({
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
   const [stickyPosition, setStickyPosition] = useState({ top: 0, right: 0 });
 
-  console.log("ctaText", ctaText);
-  console.log("media", media);
-
   // Filter preview gallery items
   const previewGalleryItems =
     media?.filter((item) => item.name === "preview_gallery") || [];
-
-  console.log("previewGalleryItems", previewGalleryItems);
 
   // Get current media item
   const currentMediaItem = previewGalleryItems[currentMediaIndex];
@@ -115,27 +110,27 @@ const HeroSection = ({
         <div className="max-w-7xl mx-auto h-full">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 h-full">
             {/* Left Content - 2/3 width */}
-            <div className="lg:col-span-2 space-y-6 flex flex-col">
+            <div className="lg:col-span-2 space-y-6 flex flex-col w-full md:w-5/6">
               <div className="space-y-4">
-                <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
+                <h1 className="text-xl md:text-4xl font-semibold leading-tight text-white">
                   {title}
                 </h1>
 
                 <div className="flex items-center space-x-2">
-                  <div className="flex text-yellow-400">
+                  <div className="flex text-[#FFA500] gap-1">
                     {[...Array(5)].map((_, i) => (
-                      <span key={i} className="text-xl">
-                        ★
+                      <span key={i}>
+                        <Star className="w-5 h-5" />
                       </span>
                     ))}
                   </div>
-                  <span className="text-gray-300">
-                    (81.8% শিক্ষার্থী কোর্স শেষে ৬+ ব্যান্ড নিশ্চয়তা)
+                  <span className="text-sm md:text-base text-white">
+                    (81.8% শিক্ষার্থী কোর্স শেষে ৫ রেটিং দিয়েছেন)
                   </span>
                 </div>
 
-                <p
-                  className="text-lg text-gray-200 leading-relaxed prose"
+                <div
+                  className="text-base text-gray-400 leading-relaxed prose"
                   dangerouslySetInnerHTML={{ __html: description }}
                 />
               </div>
@@ -148,10 +143,10 @@ const HeroSection = ({
                   isSticky ? "fixed z-50 w-80 lg:w-96" : "relative w-full"
                 }`}
               >
-                <div className="bg-white rounded-lg overflow-hidden shadow-lg">
+                <div className="bg-white rounded-[4px] overflow-hidden shadow-lg">
                   {/* Video Section - Show in mobile when sticky, hide in desktop when sticky */}
                   <div className={`${isSticky ? "lg:hidden block" : "block"}`}>
-                    <div className="aspect-video relative bg-gray-200">
+                    <div className="aspect-video relative bg-gray-200 p-1">
                       {/* Main Media Display */}
                       {currentMediaItem && (
                         <div className="w-full h-full relative">
@@ -179,6 +174,7 @@ const HeroSection = ({
                                     }
                                     alt="Video thumbnail"
                                     fill
+                                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                                     className="object-cover"
                                   />
                                   {/* Play Button Overlay */}
@@ -199,6 +195,7 @@ const HeroSection = ({
                               src={currentMediaItem.resource_value}
                               alt="Preview"
                               fill
+                              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                               className="object-cover"
                             />
                           )}
@@ -245,6 +242,7 @@ const HeroSection = ({
                                 }
                                 alt="Video thumbnail"
                                 fill
+                                sizes="64px"
                                 className="object-cover"
                               />
                               <div className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
@@ -256,6 +254,7 @@ const HeroSection = ({
                               src={item.resource_value}
                               alt="Preview thumbnail"
                               fill
+                              sizes="64px"
                               className="object-cover"
                             />
                           )}
@@ -268,13 +267,7 @@ const HeroSection = ({
                   <div className="p-6">
                     <div className="flex items-center space-x-2 mb-4">
                       <span className="text-2xl font-bold text-gray-900">
-                        ৳3850
-                      </span>
-                      <span className="text-lg text-gray-500 line-through">
-                        ৳5000
-                      </span>
-                      <span className="bg-orange-500 text-white px-2 py-1 rounded text-sm">
-                        1150 ৳ ছাড়
+                        ৳1000
                       </span>
                     </div>
 
@@ -297,6 +290,7 @@ const HeroSection = ({
                             width={20}
                             height={20}
                             alt="icon"
+                            className="object-cover"
                           />
                           <span>{feature.text}</span>
                         </div>
